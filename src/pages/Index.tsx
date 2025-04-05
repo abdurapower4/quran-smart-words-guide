@@ -1,13 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import QuranReaderPage from './QuranReaderPage';
+import VocabularyPage from './VocabularyPage';
+import AppHeader from '../components/AppHeader';
+import { VocabProvider } from '../contexts/VocabContext';
+import { getAllWords } from '../data/mockData';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <VocabProvider initialWords={getAllWords()}>
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <AppHeader />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<QuranReaderPage />} />
+            <Route path="/vocabulary" element={<VocabularyPage />} />
+          </Routes>
+        </main>
+        <footer className="py-4 text-center text-sm text-gray-500">
+          <p>© 2025 Quran Smart Words Guide - Learn Quranic Arabic Vocabulary</p>
+        </footer>
       </div>
-    </div>
+    </VocabProvider>
   );
 };
 
