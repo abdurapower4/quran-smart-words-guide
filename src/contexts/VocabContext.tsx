@@ -1,6 +1,7 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { QuranWord, VocabStatus } from '../types/quran';
-import { toast } from '../components/ui/toast';
+import { toast } from '../hooks/use-toast';  // Update import to use the correct path
 
 interface VocabContextType {
   wordStatuses: Record<string, VocabStatus>;
